@@ -1,0 +1,37 @@
+{
+  "name": "cross-browser-extension",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:firefox": "yarn undist && cross-env TARGET=firefox yarn build",
+    "build:chrome": "yarn undist && yarn build",
+    "dist:firefox": "yarn build:firefox && cross-env TARGET=firefox yarn zip",
+    "dist:chrome": "yarn build:chrome && && cross-env TARGET=chrome yarn zip",
+    "zip": "node scripts/zip.js",
+    "undist": "rimraf dist"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@types/webextension-polyfill": "^0.10.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.19",
+    "cross-env": "^7.0.3",
+    "fs-extra": "^11.2.0",
+    "postcss": "^8.4.38",
+    "rimraf": "^5.0.7",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.0",
+    "vite-plugin-web-extension": "^4.0.0",
+    "webextension-polyfill": "^0.10.0",
+    "zip-a-folder": "^3.1.6"
+  }
+}
